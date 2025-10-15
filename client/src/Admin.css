@@ -1,0 +1,804 @@
+/* =======================
+   ADMIN.CSS - EPIC ACADEMIC BLOCKCHAIN THEME
+   Professional Academic Institution Design with Blockchain Security
+   ======================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Academic Institution Colors */
+  --academic-navy: #1e3a8a;
+  --academic-blue: #2563eb;
+  --academic-gold: #d97706;
+  --academic-burgundy: #7f1d1d;
+  --academic-cream: #fef3c7;
+  
+  /* Blockchain Tech Colors */
+  --blockchain-cyan: #06b6d4;
+  --blockchain-purple: #7c3aed;
+  --blockchain-emerald: #059669;
+  
+  /* Neutral Palette */
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Status Colors */
+  --success-green: #10b981;
+  --success-light: #d1fae5;
+  --error-red: #ef4444;
+  --warning-amber: #f59e0b;
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Effects */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+/* =======================
+   ADMIN CONTAINER - PRESTIGIOUS BACKGROUND
+   ======================= */
+
+.admin-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #60a5fa 75%, #93c5fd 100%);
+  background-size: 400% 400%;
+  animation: academicGradient 20s ease infinite;
+  position: relative;
+  padding: 2rem;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Academic pattern overlay */
+.admin-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+  animation: patternShift 30s linear infinite;
+  z-index: 1;
+}
+
+/* University seal watermark effect */
+.admin-container::after {
+  content: '🎓';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40rem;
+  opacity: 0.02;
+  z-index: 1;
+  pointer-events: none;
+  animation: sealRotate 60s linear infinite;
+}
+
+@keyframes academicGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes patternShift {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(60px) translateY(60px); }
+}
+
+@keyframes sealRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.admin-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =======================
+   ADMIN BOX - PRESTIGIOUS CARD
+   ======================= */
+
+.admin-box {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: var(--shadow-2xl);
+  border-top: 6px solid var(--academic-gold);
+  border-bottom: 6px solid var(--academic-gold);
+  animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+/* Decorative corner emblems */
+.admin-box::before,
+.admin-box::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--academic-gold) 0%, var(--academic-blue) 100%);
+  opacity: 0.1;
+}
+
+.admin-box::before {
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.admin-box::after {
+  bottom: 0;
+  right: 0;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================
+   TYPOGRAPHY - ACADEMIC PRESTIGE
+   ======================= */
+
+.admin-box h2 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--academic-navy);
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+/* University crest decoration */
+.admin-box h2::before {
+  content: '🎓';
+  display: block;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: crestFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(30, 58, 138, 0.3));
+}
+
+.admin-box h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--academic-gold),
+    var(--academic-navy),
+    var(--academic-gold),
+    transparent
+  );
+  border-radius: 2px;
+}
+
+@keyframes crestFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.admin-box h3 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--academic-navy);
+  margin: 3rem 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--academic-gold);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-box h3::before {
+  content: '⚡';
+  font-size: 1.5rem;
+  color: var(--blockchain-cyan);
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.admin-box p {
+  color: var(--gray-700);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  background: var(--gray-50);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--blockchain-cyan);
+}
+
+.admin-box p strong {
+  font-weight: 700;
+  color: var(--academic-navy);
+  font-family: var(--font-mono);
+  background: var(--academic-cream);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* =======================
+   FORM INPUTS - PROFESSIONAL STYLE
+   ======================= */
+
+.admin-box input,
+.admin-box textarea,
+.admin-box select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius);
+  background: var(--gray-50);
+  color: var(--gray-800);
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.admin-box input::placeholder {
+  color: var(--gray-400);
+  font-weight: 400;
+}
+
+.admin-box input:focus,
+.admin-box textarea:focus,
+.admin-box select:focus {
+  outline: none;
+  border-color: var(--academic-blue);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  transform: translateY(-1px);
+}
+
+.admin-box input:hover {
+  border-color: var(--gray-300);
+  background: white;
+}
+
+/* File input special styling */
+.admin-box input[type="file"] {
+  background: linear-gradient(135deg, var(--gray-50) 0%, white 100%);
+  border: 2px dashed var(--academic-blue);
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  color: var(--academic-blue);
+  font-weight: 600;
+}
+
+.admin-box input[type="file"]:hover {
+  border-color: var(--academic-navy);
+  background: linear-gradient(135deg, white 0%, var(--gray-50) 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Date input styling */
+.admin-box input[type="date"] {
+  font-family: var(--font-mono);
+  color: var(--academic-navy);
+}
+
+.admin-box input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(17%) sepia(73%) saturate(2817%) hue-rotate(215deg);
+}
+
+/* =======================
+   BUTTONS - PRESTIGIOUS DESIGN
+   ======================= */
+
+.admin-box button {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  
+  background: linear-gradient(135deg, var(--academic-navy) 0%, var(--academic-blue) 100%);
+  color: white;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Button shine effect */
+.admin-box button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.admin-box button:hover::before {
+  left: 100%;
+}
+
+.admin-box button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+}
+
+.admin-box button:active {
+  transform: translateY(-1px);
+}
+
+.admin-box button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* =======================
+   HASH VERIFICATION SECTION
+   ======================= */
+
+.admin-box > div[style*="background: rgba(255, 255, 255, 0.1)"] {
+  background: linear-gradient(135deg, var(--gray-50) 0%, white 100%) !important;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--academic-gold);
+  margin-top: 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.admin-box > div[style*="background: rgba(255, 255, 255, 0.1)"] h3 {
+  color: var(--academic-navy);
+  font-family: var(--font-serif);
+  margin-top: 0;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-box > div[style*="background: rgba(255, 255, 255, 0.1)"] h3::before {
+  content: '🔍';
+}
+
+.admin-box > div[style*="background: rgba(255, 255, 255, 0.1)"] input {
+  background: white;
+  border: 2px solid var(--gray-300);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--academic-navy);
+}
+
+.admin-box > div[style*="background: rgba(255, 255, 255, 0.1)"] button {
+  margin-top: 0;
+  width: auto;
+  background: linear-gradient(135deg, var(--blockchain-cyan) 0%, var(--blockchain-emerald) 100%);
+  padding: 1rem 2rem;
+}
+
+/* =======================
+   CERTIFICATE CARDS - ACADEMIC RECORDS
+   ======================= */
+
+.certificate-card {
+  background: linear-gradient(135deg, var(--gray-50) 0%, white 100%);
+  border: 2px solid var(--gray-200);
+  border-left: 6px solid var(--academic-blue);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Academic seal decoration */
+.certificate-card::before {
+  content: '🎓';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  opacity: 0.1;
+}
+
+.certificate-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-left-color: var(--academic-gold);
+}
+
+.certificate-card p {
+  color: var(--gray-700);
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  padding: 0;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.certificate-card p strong {
+  font-weight: 700;
+  color: var(--academic-navy);
+  background: none;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  min-width: 120px;
+}
+
+/* Hash display styling */
+.certificate-card div[style*="gridColumn"] {
+  grid-column: 1 / -1;
+  background: var(--gray-900) !important;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+  border: 2px solid var(--academic-gold);
+}
+
+.certificate-card div[style*="gridColumn"] p {
+  color: var(--gray-300) !important;
+  margin: 0;
+}
+
+.certificate-card div[style*="gridColumn"] span {
+  font-family: var(--font-mono) !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: var(--academic-gold) !important;
+  background: rgba(217, 119, 6, 0.1) !important;
+  padding: 0.75rem !important;
+  border-radius: 6px !important;
+  display: block !important;
+  margin-top: 0.75rem !important;
+  letter-spacing: 1px !important;
+  word-break: break-all !important;
+}
+
+/* Certificate action buttons */
+.certificate-card button {
+  margin-top: 0;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+}
+
+.certificate-card button:first-of-type {
+  background: linear-gradient(135deg, var(--blockchain-cyan) 0%, var(--blockchain-emerald) 100%);
+  flex: 1;
+}
+
+.certificate-card button:last-of-type {
+  background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-700) 100%);
+  width: auto;
+  padding: 0.875rem 1.5rem;
+}
+
+/* =======================
+   EMPTY STATE
+   ======================= */
+
+.admin-box > p:only-of-type {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--gray-50);
+  border: 2px dashed var(--gray-300);
+  border-radius: var(--radius-lg);
+  color: var(--gray-600);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* =======================
+   RESPONSIVE DESIGN
+   ======================= */
+
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 1rem;
+  }
+  
+  .admin-box {
+    padding: 2rem 1.5rem;
+  }
+  
+  .admin-box h2 {
+    font-size: 2.25rem;
+  }
+  
+  .admin-box h2::before {
+    font-size: 2.5rem;
+  }
+  
+  .admin-box h3 {
+    font-size: 1.5rem;
+  }
+  
+  .certificate-card {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-box {
+    padding: 1.5rem 1rem;
+  }
+  
+  .admin-box h2 {
+    font-size: 1.875rem;
+  }
+  
+  .admin-box input,
+  .admin-box button {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* =======================
+   ACCESSIBILITY
+   ======================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--academic-blue);
+  outline-offset: 3px;
+}
+
+/* =======================
+   LOADING STATES & ANIMATIONS
+   ======================= */
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.loading {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    var(--gray-100) 0%,
+    var(--gray-200) 20%,
+    var(--gray-100) 40%,
+    var(--gray-100) 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* =======================
+   ADMIN NAVIGATION & BUTTONS
+   ======================= */
+
+.admin-header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--gray-200);
+  margin-bottom: 2rem;
+}
+
+.admin-header-nav h2 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-size: 2.5rem; /* Slightly smaller for the header */
+}
+
+.admin-header-nav h2::after {
+  content: none; /* Remove the underline decoration */
+}
+
+.admin-nav-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-nav-buttons .nav-button,
+.admin-nav-buttons .logout-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-nav-buttons .nav-button {
+  background: var(--academic-navy);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-nav-buttons .nav-button:hover {
+  background: var(--academic-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.admin-nav-buttons .logout-button {
+  background: var(--gray-200);
+  color: var(--gray-800);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-nav-buttons .logout-button:hover {
+  background: var(--gray-300);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments for navigation */
+@media (max-width: 768px) {
+  .admin-header-nav {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .admin-nav-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .admin-nav-buttons .nav-button,
+  .admin-nav-buttons .logout-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* =======================
+   HASH VERIFICATION FORM
+   ======================= */
+
+.verification-form-container {
+    display: flex;
+    gap: 1.5rem; /* Increased gap for better spacing */
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.verification-form-container .hash-input {
+    flex-grow: 1; /* Allows the input to grow and take up available space */
+    padding: 1rem 1.25rem;
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--gray-800);
+    background: var(--gray-50);
+    transition: var(--transition);
+}
+
+.verification-form-container .hash-input:focus {
+    outline: none;
+    border-color: var(--academic-blue);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.verification-form-container .verify-button {
+    padding: 1rem 2rem;
+    white-space: nowrap; /* Prevents button text from wrapping */
+    font-size: 1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--blockchain-cyan) 0%, var(--blockchain-emerald) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.verification-form-container .verify-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}

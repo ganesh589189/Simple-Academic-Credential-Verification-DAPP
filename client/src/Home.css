@@ -1,0 +1,513 @@
+/* =======================
+   HOME.CSS - EPIC BLOCKCHAIN ACADEMIC THEME
+   ======================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Blockchain Color Palette */
+  --blockchain-dark: #0a0e27;
+  --blockchain-blue: #00d4ff;
+  --blockchain-purple: #6366f1;
+  --blockchain-cyan: #22d3ee;
+  --blockchain-gold: #fbbf24;
+  --blockchain-green: #10b981;
+  
+  /* Academic Colors */
+  --academic-navy: #1e3a8a;
+  --academic-gold: #f59e0b;
+  --academic-silver: #94a3b8;
+  
+  /* Effects */
+  --glow-blue: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3);
+  --glow-purple: 0 0 20px rgba(99, 102, 241, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
+  --glow-gold: 0 0 20px rgba(251, 191, 36, 0.5), 0 0 40px rgba(251, 191, 36, 0.3);
+  
+  /* Fonts */
+  --font-tech: 'Orbitron', monospace;
+  --font-modern: 'Space Grotesk', sans-serif;
+}
+
+/* =======================
+   BLOCKCHAIN ANIMATED BACKGROUND
+   ======================= */
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-modern);
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+
+/* Animated blockchain network background */
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  z-index: 1;
+}
+
+/* Floating blockchain nodes */
+.home-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 70%, rgba(34, 211, 238, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+  animation: nodeFloat 15s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Particle effect */
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50px); }
+}
+
+@keyframes nodeFloat {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* =======================
+   MAIN HEADING - EPIC STYLE
+   ======================= */
+
+.home-container > * {
+  position: relative;
+  z-index: 10;
+}
+
+.home-container h1 {
+  font-family: var(--font-tech);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  color: transparent;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  
+  /* Epic gradient text */
+  background: linear-gradient(
+    135deg,
+    var(--blockchain-blue) 0%,
+    var(--blockchain-purple) 25%,
+    var(--blockchain-cyan) 50%,
+    var(--blockchain-gold) 75%,
+    var(--blockchain-blue) 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Glowing effect */
+  filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.5));
+  
+  /* Animation */
+  animation: gradientShift 8s ease infinite, textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes textGlow {
+  from { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3)); }
+  to { filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.8)); }
+}
+
+/* Add blockchain icon effect */
+.home-container h1::before {
+  content: '⛓️';
+  display: block;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  animation: chainRotate 3s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6));
+}
+
+@keyframes chainRotate {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+}
+
+/* =======================
+   SUBTITLE - TECH STYLE
+   ======================= */
+
+.home-container p {
+  font-family: var(--font-modern);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--blockchain-cyan);
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 700px;
+  padding: 0 2rem;
+  line-height: 1.8;
+  font-weight: 400;
+  
+  /* Glowing border box */
+  background: rgba(0, 212, 255, 0.05);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 15px;
+  padding: 1.5rem 2rem;
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.2),
+    inset 0 0 20px rgba(0, 212, 255, 0.05);
+  
+  animation: borderPulse 3s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(0, 212, 255, 0.3); box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
+  50% { border-color: rgba(0, 212, 255, 0.6); box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); }
+}
+
+/* Add security badge icon */
+.home-container p::before {
+  content: '🔒';
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  animation: lockBounce 2s ease-in-out infinite;
+}
+
+@keyframes lockBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* =======================
+   LOGIN BUTTONS - FUTURISTIC DESIGN
+   ======================= */
+
+.login-buttons {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.login-buttons button {
+  position: relative;
+  padding: 1.5rem 3rem;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: var(--font-tech);
+  cursor: pointer;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* 3D effect */
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+}
+
+/* Animated background for buttons */
+.login-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.login-buttons button:hover::before {
+  left: 100%;
+}
+
+/* Student Button - Blue/Cyan Theme */
+.login-buttons button:nth-child(1) {
+  background: linear-gradient(135deg, #00d4ff 0%, #0284c7 100%);
+  color: white;
+  box-shadow: 
+    0 10px 30px rgba(0, 212, 255, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 212, 255, 0.5);
+}
+
+.login-buttons button:nth-child(1)::after {
+  content: '🎓';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: iconFloat 2s ease-in-out infinite;
+}
+
+/* Employee Button - Purple Theme */
+.login-buttons button:nth-child(2) {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: white;
+  box-shadow: 
+    0 10px 30px rgba(99, 102, 241, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(99, 102, 241, 0.5);
+}
+
+.login-buttons button:nth-child(2)::after {
+  content: '👤';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: iconFloat 2s ease-in-out infinite 0.3s;
+}
+
+/* Admin Button - Gold Theme */
+.login-buttons button:nth-child(3) {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #0a0e27;
+  box-shadow: 
+    0 10px 30px rgba(251, 191, 36, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  font-weight: 900;
+}
+
+.login-buttons button:nth-child(3)::after {
+  content: '⚡';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: iconFloat 2s ease-in-out infinite 0.6s;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(-50%) rotate(0deg); }
+  50% { transform: translateY(-60%) rotate(10deg); }
+}
+
+/* Button hover effects */
+.login-buttons button:hover {
+  transform: translateY(-10px) scale(1.05) rotateX(5deg);
+  box-shadow: 
+    0 20px 50px rgba(0, 212, 255, 0.6),
+    inset 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.login-buttons button:nth-child(1):hover {
+  box-shadow: 
+    0 20px 50px rgba(0, 212, 255, 0.7),
+    0 0 60px rgba(0, 212, 255, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.login-buttons button:nth-child(2):hover {
+  box-shadow: 
+    0 20px 50px rgba(99, 102, 241, 0.7),
+    0 0 60px rgba(99, 102, 241, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.login-buttons button:nth-child(3):hover {
+  box-shadow: 
+    0 20px 50px rgba(251, 191, 36, 0.7),
+    0 0 60px rgba(251, 191, 36, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.login-buttons button:active {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Ripple effect on click */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* =======================
+   DECORATIVE ELEMENTS
+   ======================= */
+
+/* Blockchain chain decoration */
+.home-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--blockchain-cyan),
+    var(--blockchain-blue),
+    var(--blockchain-cyan),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: lineMove 3s linear infinite;
+  box-shadow: 0 0 20px var(--blockchain-cyan);
+}
+
+@keyframes lineMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* =======================
+   RESPONSIVE DESIGN
+   ======================= */
+
+@media (max-width: 768px) {
+  .home-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .home-container h1::before {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .home-container p {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .login-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+    gap: 1.5rem;
+  }
+  
+  .login-buttons button {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 1rem;
+  }
+  
+  .home-container h1 {
+    font-size: 2rem;
+  }
+  
+  .home-container p {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  
+  .login-buttons button {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* =======================
+   ACCESSIBILITY
+   ======================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button:focus-visible {
+  outline: 3px solid var(--blockchain-cyan);
+  outline-offset: 4px;
+}
+
+/* =======================
+   LOADING ANIMATION
+   ======================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-container h1 {
+  animation: fadeInUp 1s ease-out;
+}
+
+.home-container p {
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.login-buttons {
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+/* Particle stars background */
+.home-container {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 60px 70px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 50px 50px, rgba(0, 212, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(99, 102, 241, 0.8), transparent),
+    radial-gradient(2px 2px at 90px 10px, rgba(255, 255, 255, 0.5), transparent);
+  background-size: 200px 200px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 50px;
+  animation: starsTwinkle 20s linear infinite;
+}
+
+@keyframes starsTwinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
